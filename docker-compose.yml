@@ -1,0 +1,34 @@
+version: "3.3"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./docker/API.Dockerfile
+    volumes:
+    - ./:/usr/src/app
+    ports:
+    - 8000:8000
+    env_file:
+    - ./.env
+    restart: always
+
+  bot:
+    build:
+      context: .
+      dockerfile: ./docker/Bot.Dockerfile
+    volumes:
+    - ./:/usr/src/app
+    env_file:
+    - ./.env
+    restart: always
+
+  task:
+    build:
+      context: .
+      dockerfile: ./docker/Task.Dockerfile
+    volumes:
+    - ./:/usr/src/app
+    env_file:
+    - ./.env
+    restart: always

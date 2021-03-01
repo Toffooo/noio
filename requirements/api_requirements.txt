@@ -1,0 +1,5 @@
+fastapi[all]
+sqlalchemy
+uvicorn[standard]
+python-decouple
+pymysql
