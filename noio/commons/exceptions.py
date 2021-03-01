@@ -1,0 +1,2 @@
+class TooManyArgumentsProvided(ValueError):
+    pass

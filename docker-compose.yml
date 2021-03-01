@@ -1,0 +1,44 @@
+version: "3.3"
+
+services:
+  sqlite_web:
+    build:
+      context: .
+      dockerfile: ./docker/Sqlite.Dockerfile
+    volumes:
+    - ./:/data
+    ports:
+    - 8080:8080
+    restart: always
+
+  api:
+    build:
+      context: .
+      dockerfile: ./docker/API.Dockerfile
+    volumes:
+    - ./:/usr/src/app
+    ports:
+    - 8000:8000
+    env_file:
+    - ./.env
+    restart: always
+
+  bot:
+    build:
+      context: .
+      dockerfile: ./docker/Bot.Dockerfile
+    volumes:
+    - ./:/usr/src/app
+    env_file:
+    - ./.env
+    restart: always
+
+  task:
+    build:
+      context: .
+      dockerfile: ./docker/Task.Dockerfile
+    volumes:
+    - ./:/usr/src/app
+    env_file:
+    - ./.env
+    restart: always
