@@ -9,7 +9,7 @@ async def send_message():
     for telegram_id in telegram_ids:
         for notice in notices:
             notice.is_new = False
+            notice.save()
             await bot.send_message(
                 text=f"{notice.name} \n{notice.link}", chat_id=telegram_id
             )
-            notice.save()
